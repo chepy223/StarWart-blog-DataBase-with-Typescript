@@ -24,42 +24,81 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.User = void 0;
+exports.Planet = void 0;
 var typeorm_1 = require("typeorm");
-var Planet_1 = require("./Planet");
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var Character_1 = require("./Character");
+var Planet = /** @class */ (function (_super) {
+    __extends(Planet, _super);
+    function Planet() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "id");
+    ], Planet.prototype, "id");
     __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "first_name");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "last_name");
+        typeorm_1.OneToMany(function () { return Character_1.Character; }, function (character) { return character.planet; }),
+        __metadata("design:type", Array)
+    ], Planet.prototype, "characters");
     __decorate([
         typeorm_1.Column({ unique: true }),
         __metadata("design:type", String)
-    ], User.prototype, "email");
+    ], Planet.prototype, "name");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "password");
+    ], Planet.prototype, "description");
     __decorate([
-        typeorm_1.ManyToMany(function () { return Planet_1.Planet; }),
-        typeorm_1.JoinTable(),
-        __metadata("design:type", Array)
-    ], User.prototype, "planets");
-    User = __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Planet.prototype, "image_url");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Planet.prototype, "diameter");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Planet.prototype, "rotation_period");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Planet.prototype, "orbital_period");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Planet.prototype, "gravity");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Planet.prototype, "population");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Planet.prototype, "climate");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Planet.prototype, "terrain");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Planet.prototype, "surface_water");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Planet.prototype, "created");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Planet.prototype, "edited");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Planet.prototype, "url");
+    Planet = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], Planet);
+    return Planet;
 }(typeorm_1.BaseEntity));
-exports.User = User;
+exports.Planet = Planet;

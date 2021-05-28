@@ -24,36 +24,77 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.Users = void 0;
+exports.Character = void 0;
 var typeorm_1 = require("typeorm");
-var Users = /** @class */ (function (_super) {
-    __extends(Users, _super);
-    function Users() {
+var Planet_1 = require("./Planet");
+var Character = /** @class */ (function (_super) {
+    __extends(Character, _super);
+    function Character() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Users.prototype, "id");
+    ], Character.prototype, "id");
     __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], Users.prototype, "first_name");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], Users.prototype, "last_name");
+        typeorm_1.ManyToOne(function () { return Planet_1.Planet; }, function (planet) { return planet.characters; }),
+        __metadata("design:type", Planet_1.Planet)
+    ], Character.prototype, "planet");
     __decorate([
         typeorm_1.Column({ unique: true }),
         __metadata("design:type", String)
-    ], Users.prototype, "email");
+    ], Character.prototype, "name");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Users.prototype, "password");
-    Users = __decorate([
+    ], Character.prototype, "description");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "image_url");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Character.prototype, "height");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Character.prototype, "mass");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "hair_color");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "skin_color");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "eye_color");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "birth_year");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "gender");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "created");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "edited");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "url");
+    Character = __decorate([
         typeorm_1.Entity()
-    ], Users);
-    return Users;
+    ], Character);
+    return Character;
 }(typeorm_1.BaseEntity));
-exports.Users = Users;
+exports.Character = Character;
